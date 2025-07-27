@@ -1,0 +1,144 @@
+# Humanized Research Article
+
+## Abstract
+
+This research examines how different disc cutter tip geometries affect rock cutting performance through numerical simulations that were validated using experimental data from Gertsch et al. We analyzed four distinct cutter tip configurations—flat, wedge, rounded, and bullet shapes—across multiple penetration depths and disc spacing arrangements on Colorado Red Granite specimens. Our material model underwent validation via uniaxial and triaxial compression testing, demonstrating accuracy within 2.8% and 13% error margins, respectively. When comparing simulated cutting results with experimental measurements, we achieved less than 10% error for normal forces and 13% error for rolling forces, establishing the reliability of our modeling approach.
+
+Our findings demonstrate that cutter tip configuration substantially influences cutting forces, penetration characteristics, and damage patterns. When comparing performance against the bullet-shaped design, the flat-tip cutter showed remarkably higher values: normal force increased by up to 88%, rolling force by 210%, and plastic damage zones expanded by as much as 65%. The bullet-shaped cutter demonstrated consistently superior performance with the lowest Normal Force Index (NFI) and Rolling Force Index (RFI), indicating enhanced cutting efficiency and reduced mechanical stress. Meanwhile, flat and wedge configurations produced more extensive and severe damage patterns due to increased contact areas and concentrated stress distributions.
+
+Our results underscore the significant impact of tip geometry on cutterhead effectiveness, indicating that implementing curved tip configurations like bullet or rounded cutters can improve fragmentation performance, prolong cutter durability, and reduce energy requirements in tunnel boring machine (TBM) applications.
+
+## 1. Validation of Structural Model Parameters
+
+Proper calibration of constitutive models represents a fundamental requirement for achieving realistic simulations of rock mechanical behavior under diverse loading scenarios. This calibration process typically demands comprehensive laboratory testing to ensure that material constants used in numerical analyses accurately reflect the physical characteristics of actual rock samples. Standard laboratory procedures for this validation include uniaxial and triaxial compression testing, Brazilian (indirect tensile) experiments, point load assessments, and sophisticated dynamic testing such as split-Hopkinson pressure bar (SHPB) analyses. While these testing methods effectively capture rock behavior, they often demand substantial resources in terms of time, expense, and specialized laboratory equipment.
+
+To minimize reliance on new experimental programs while maintaining the integrity of our numerical modeling approach, this investigation utilized structural parameters from previous research by Gertsch and Hyun Lee et al., who established comprehensive databases of mechanical properties for Colorado Red Granite. These datasets include compressive and tensile strength measurements, dynamic elastic parameters, and calibrated material coefficients.
+
+For evaluating the dependability of these adopted parameters, we selected two fundamental tests for numerical simulation: the uniaxial compression test and the Brazilian tensile test. These experiments provide essential validation benchmarks for material models under both static and dynamic loading conditions. We also numerically replicated a linear cutting test previously conducted by Gertsch et al., with detailed discussion of these simulation outcomes presented in the following sections.
+
+### 1.1 Simulation of the Uniaxial Compression Test
+
+The uniaxial compression test stands as one of the most basic and universally recognized methods for determining the compressive strength of geological materials. This test provides direct measurement of rock resistance to axial loading and forms the foundation for numerous engineering analyses and design procedures in geotechnical and civil engineering applications.
+
+Our numerical simulation followed standard geometric requirements. We modeled the Colorado Red Granite specimen as a cylindrical sample measuring 54 mm in diameter and 116 mm in height, conforming to international standards for uniaxial compression testing (Bieniawski, 2020). This configuration enabled direct comparison with existing experimental data. We developed the model using LS-PREPOST software, accurately constructing both specimen geometry and loading arrangement. Figure 3 shows the completed model, including applied boundary conditions and loading configuration. In this setup, we applied axial compressive loading from the upper platen while fixing the lower platen, replicating actual laboratory testing conditions and ensuring realistic mechanical constraints.
+
+Our simulation employed material model constants calibrated from experimental results documented in earlier studies (Li and Du, 2016; Gertsch et al., 2007). Laboratory experiments established that Colorado Red Granite exhibits an average uniaxial compressive strength of approximately 158 MPa. Our numerical model predicted a compressive strength of roughly 162.5 MPa, as shown in Figure 4. The difference between simulated and experimental values was only about 2.8%, demonstrating the accuracy and reliability of our selected parameters. Figure 5 shows the specimen's final state after failure. The failure pattern, stress distribution, and observed cracking behavior align with those documented in physical experiments, confirming the validity of our numerical approach.
+
+### 1.2 Simulation of the Brazilian Tensile Test
+
+Tensile strength represents a crucial property in rock mechanics, particularly since rocks exhibit significantly lower strength in tension compared to compression. However, conducting direct tensile tests on rock specimens presents technical challenges related to alignment and gripping difficulties, which frequently cause premature failure. Consequently, the Brazilian (indirect tensile) test serves as a practical alternative for determining tensile strength. This method involves applying compressive loads along the diametrical plane of a disc-shaped specimen, creating tensile stress at the disc center.
+
+In our current simulation, we modeled a standard Brazilian disc measuring 54 mm in diameter and 27 mm in thickness using LS-DYNA. This configuration ensures valid comparison with experimental results and enables accurate evaluation of the model's capability to replicate tensile failure mechanisms. Figure 6 presents the geometric configuration of the Brazilian test, including applied loading and contact surfaces in LS-PREPOST software.
+
+Experimental studies established that Colorado Red Granite exhibits a tensile strength of approximately 6.8 MPa. Our simulation predicted a tensile strength of 7.7 MPa, as determined from the peak load in the stress-displacement curve shown in Figure 7. Figure 8 illustrates the deformation and failure zone within the specimen following load application. The difference between simulated and experimental results produced an error of approximately 13%, which remains acceptable considering the complexities involved in indirect tensile simulations.
+
+The combined outcomes of our uniaxial and Brazilian simulations indicate that the adopted material parameters—originally developed by Hyun Lee and colleagues—provide satisfactory accuracy for modeling Colorado Red Granite under both compressive and tensile loading conditions. The uniaxial test demonstrated less than 2.8% error, while the Brazilian test maintained within a 13% error range. These results validate the reliability of our structural model and its potential for confident application in more complex rock interaction scenarios, such as modeling rock fragmentation processes during TBM cutter disc operations.
+
+## 2. Characteristics of Linear Shear Simulation
+
+LS-DYNA incorporates multiple advanced numerical solvers appropriate for simulating dynamic behaviors in rock materials, including the traditional Lagrangian formulation, the Smoothed Particle Hydrodynamics (SPH) method, and the recently developed Smoothed Particle Galerkin (SPG) approach. The SPG method, based on a Galerkin framework, enhances SPH capabilities by providing improved numerical stability and accuracy, particularly in situations involving large deformations and discontinuities (Wu et al., 2025).
+
+Research by Rokhy and colleagues emphasizes that mesh-free techniques like SPH and SPG demonstrate superior performance compared to traditional Lagrangian methods in rock cutting simulations, primarily due to their ability to circumvent problems related to element erosion and mesh distortion (Bhat & Maji, 2022).
+
+In this investigation, we adopted the Lagrangian solver for simulating uniaxial and Brazilian tensile tests to minimize computational cost while maintaining adequate accuracy. For linear shear simulation, we implemented a hybrid approach: the Lagrangian solver was used for rock mass regions not directly affected by the cutting tool, while the SPG solver was applied in the high-stress interaction zone beneath the cutter. We defined this SPG-activated zone to extend laterally three to four times the cutter spacing and vertically to a depth of ten times the cutter's penetration depth. The complete model configuration, including both solver domains and geometric layout, appears in Figure 9, with Figures 10-12 showing the SPG zone.
+
+The cutter disc used in experiments conducted by Gertsch et al. (2007) was a constant cross-section disc manufactured by Robbins, featuring a 17-inch diameter (432 mm) and an edge thickness of 0.54 inches (13.7 mm). The cutter was constructed from AISI 4340 steel, recognized for its high strength and hardness characteristics. Given the exceptional stiffness and durability of this material, we modeled the disc as a rigid body in our simulation.
+
+## 3. Validation of Linear Cutting Simulations
+
+To ensure reliability of the numerical simulations developed in this study, we conducted validation by comparing simulation results with those documented in experimental work by Gertsch et al. (2007). Strong correlation between numerical predictions and laboratory observations enhances simulation credibility, particularly when applied to cases where empirical data is unavailable. Therefore, we paid careful attention to replicating experimental conditions in our numerical model, including boundary constraints, loading rates, cutter kinematics, and material behavior.
+
+We conducted twelve simulations to replicate linear cutting scenarios with varying geometric and operational parameters. These configurations included combinations of three penetration depths (2.5 mm, 5.1 mm, and 6.4 mm) and three cutter spacings (25 mm, 51 mm, and 76 mm). We executed the simulations using a modeled cutter disc with a linear cutting speed of 0.33 mm/ms and an angular velocity of 0.0015 rad/ms, as shown in Figure 20.
+
+For all scenarios discussed here, the reported forces correspond exclusively to those acting on the central cutter. Because end discs experience significant influence from edge effects and boundary interactions, their recorded forces show high variability. Therefore, to minimize these boundary influences and obtain representative results, we averaged force values from the central cutter over a time window when the cutter was positioned in the central zone of the rock body—specifically between 400 and 600 milliseconds of simulation time, when stress wave reflections and edge effects were minimal.
+
+These averaged forces—both vertical (penetration) and rolling (horizontal)—serve as the effective cutting response of the rock. As an example, Figures 11 and 12 display force histories for a simulation case with 6.4 mm penetration and 76 mm cutter spacing, modeled using a hybrid Lagrangian-SPG solver and the Johnson–Holmquist constitutive model for concrete. Additionally, Figure 13 provides a visual snapshot of the simulated cutting process, showing the interaction between the cutter and rock mass during operation.
+
+The comparison between validation modeling results and experimental data—summarized in Table 3 and shown in Figures 14 and 15, which present simulated and experimental vertical and rotational forces respectively—indicates a maximum error of less than 10% for vertical forces and approximately 13% for rotational forces. These deviation levels confirm that our numerical model demonstrates adequate accuracy and can be considered sufficiently validated.
+
+## 4. Evaluation of Cutter Edge Shapes in Linear Rock Cutting
+
+To investigate how cutter tip geometry influences vertical and rotational forces generated during rock cutting, we selected four commonly used disc cutter shapes with fixed cross-sections. These configurations represent typical cutter designs employed in full-face tunnel boring machines (TBMs) for tunneling projects. The selected cutter shapes include:
+
+• (a) Flat-tip disc cutter
+• (b) Rounded-tip disc cutter  
+• (c) Wedge-tip disc cutter
+• (d) Bullet-shaped disc cutter
+
+The main objective of this study involves evaluating and comparing normal (vertical) and rotational forces induced by each tip shape under identical cutting conditions. To ensure that observed differences result solely from variations in tip geometry, we maintained all other cutter parameters constant across the models.
+
+We modeled all four disc cutters using the same material—AISI 4340 steel—as used in the previously validated A30581 cutter model. Each cutter has a diameter of 432 mm (17 inches) and a width of 21 mm (0.83 inches). The modeling conditions, including penetration depth, cutter spacing, and contact parameters, were also kept constant for all simulations to isolate the effect of tip shape. Figure 5-1 shows the cross-sectional profiles of the four cutter edge shapes. Table 5 summarizes the simulation results corresponding to each cutter geometry, highlighting variations in vertical and rotational forces across different tip shapes.
+
+### 4.1 Analysis of Normal and Rolling Forces Based on Cutter Tip Shape
+
+Our simulation results demonstrate that cutter tip geometry has a substantial impact on both normal and rolling forces acting on disc cutters. Among the four studied tip shapes—bullet, rounded, wedge, and flat—we observed a clear ascending trend in the magnitude of applied forces. As the cutter tip becomes flatter, the forces transmitted to the cutter during linear rock cutting increase significantly.
+
+The bullet-shaped tip, characterized by smooth curvature and small contact area, consistently produces the lowest normal and rolling forces across all tested penetration depths and disc spacings. This can be attributed to reduced contact friction and a more concentrated stress zone that facilitates initial rock fracture.
+
+The rounded tip shows moderately higher forces but still remains lower than those of wedge and flat tips. The wedge-shaped tip, due to its angular profile, generates higher stress concentrations at the cutting edge. While this can improve penetration efficiency, it also leads to increased mechanical resistance, thus elevating both normal and rolling force demands.
+
+The flat-shaped tip results in the highest forces among all geometries. Its broad and blunt interface creates a larger contact area with the rock surface, requiring greater compressive force to initiate and propagate fractures. This configuration also increases rolling resistance due to intensified frictional interactions during chip removal.
+
+Quantitatively, compared to the bullet-shaped cutter, the flat-tip cutter exhibits an average increase of 88% in normal force and 210% in rolling force. For the wedge-tip cutter, these increases are approximately 52% and 62%, respectively, while the rounded-tip cutter shows a 36% increase in normal force and 24% in rolling force. These results clearly highlight the strong dependence of cutting forces on cutter tip shape.
+
+Although the primary focus of this study concerns the influence of tip geometry, the effects of penetration depth and cutter spacing are also significant. Generally, both parameters contribute to increased force magnitudes, but penetration depth has a more pronounced impact, especially at greater values where force escalation becomes nonlinear. This is consistent with findings from previous studies such as those by Gertsch et al. [17], Roxborough and Phillips [12], and Tomac [31]. The normal and rolling force trends across different cutter tip shapes are illustrated in Figure 5-4, while corresponding rolling forces are depicted in Figure 5-5.
+
+These findings emphasize the critical role of cutter tip design in optimizing rock cutting performance. Utilizing sharper or more curved cutter profiles can reduce mechanical load on the cutting system, potentially improving cutterhead durability and energy efficiency in mechanized tunneling applications.
+
+### 4.2 Analysis of Cutter Coefficient (CC) Based on Tip Shape
+
+The Cutter Coefficient (CC), defined as the ratio of rolling force to normal force (Eq. 5-1), serves as a key parameter in evaluating mechanical performance of disc cutters. It reflects the relative torque required for a given thrust force and thus plays an important role in predicting cutterhead behavior and energy consumption in full-face tunnel boring machines (TBMs).
+
+To assess how cutter tip geometry influences CC, we performed simulations on four distinct cutter shapes—flat, wedge, rounded, and bullet—under various combinations of penetration depth and cutter spacing. The results, summarized in Table 5-5, reveal a consistent pattern across all cases: CC increases nearly linearly with increasing penetration depth, regardless of cutter shape or spacing. This behavior aligns well with experimental observations reported by Gertsch et al. [17] and analytical predictions proposed by Rostami and Ozdemir [57].
+
+While penetration depth exerts a dominant influence on CC, the effect of cutter spacing is more nuanced. At shallow penetrations (less than approximately 3.8 mm), CC slightly decreases as spacing increases. However, beyond this penetration level, we observe a slight increase in CC with spacing. These trends are illustrated in Figures 5-16 through 5-19 and are consistent with the forward shift of the cutting force resultant due to increased contact length between the disc and rock at deeper penetrations.
+
+Cutter tip geometry significantly influences CC magnitude. The flat-tip cutter consistently exhibits the highest CC values, ranging from 7.5% to 14.3%, indicating a higher torque demand relative to normal force. The wedge-shaped cutter follows, with CC values between 3.5% and 10.8%. Rounded-tip cutters show intermediate behavior, with CC ranging from 3.8% to 9.1%. The bullet-shaped cutter demonstrates the lowest CC values, ranging from 4.3% to 9.7%, across all conditions. This progressive trend suggests that as the cutter tip becomes flatter, the required torque per unit thrust increases considerably.
+
+This phenomenon can be attributed to differences in contact mechanics. Flat and wedge-shaped cutters, due to their larger or angular contact areas, produce greater friction and a more distributed stress field, resulting in increased rolling resistance. In contrast, the bullet-shaped tip, with its smaller and more concentrated contact zone, facilitates rock fracture with lower torque requirements.
+
+Figures 5-24 and 5-25 further highlight these differences. Figure 5-24 presents CC variation with penetration depth for each tip shape, while Figure 5-25 shows average CC values across all simulations. The results confirm that tip geometry not only affects the absolute magnitude of cutting forces but also the proportion of torque to thrust, thus playing a pivotal role in cutterhead design and energy efficiency optimization.
+
+### 4.3 Penetration Force Indices (NFI and RFI)
+
+The normal and rolling force indices (NFI and RFI) represent the amount of force required to achieve unit penetration depth during rock cutting. We compute these indices by dividing the respective cutting force by penetration depth, as shown in Equations (5-2) and (5-3). Lower values of these indices are desirable, as they indicate more efficient cutting with reduced energy consumption, which enhances disc cutter service life.
+
+where FN is the normal force (kN), FR is the rolling force (kN), and P is the penetration depth (mm).
+
+Comprehensive analysis of simulation data across various cutter tip geometries—flat, wedge, rounded, and bullet—reveals that tip shape significantly influences both NFI and RFI. The flat tip consistently exhibits the highest force indices, indicating that more energy is required for cutting, which accelerates cutter wear and shortens service life. In contrast, the bullet-shaped cutter yields the lowest indices across all tested conditions, confirming its superior cutting efficiency and potential for longer operational life.
+
+The rounded and wedge tips demonstrate intermediate performance. On average, both NFI and RFI increase progressively as cutter tip geometry becomes flatter, suggesting a direct correlation between edge bluntness and cutting inefficiency. For instance, at a spacing of 76 mm and penetration depth of 6.4 mm, the flat-tip cutter exhibits NFI and RFI values of 61.2 and 8.9 respectively, whereas the bullet-tip cutter records corresponding values of 31.5 and 3.1—approximately a 48% reduction in NFI and a 65% reduction in RFI.
+
+The influence of penetration depth on the indices is also prominent. For all cutter types, increasing penetration depth results in decreased NFI due to improved rock fragmentation efficiency, while RFI tends to increase as greater contact areas and higher torque demands arise. For example, in the rounded cutter at 76 mm spacing, NFI decreases from 60.1 to 43.5 as penetration increases from 1.9 mm to 6.4 mm, while RFI rises from 2.3 to 4.0 over the same range.
+
+The effect of cutter spacing is less pronounced but still notable. At constant penetration, increasing spacing from 25 mm to 76 mm generally leads to higher NFI and RFI, primarily due to reduced cutter density on the cutterhead and increased load per cutter. In the wedge cutter at 3.8 mm penetration, NFI increases from 42.5 at 25 mm spacing to 52.7 at 76 mm, while RFI grows from 2.7 to 5.1.
+
+Overall, these results emphasize that tip geometry exerts the most significant influence on cutting efficiency and cutter longevity. Bullet-shaped cutters not only reduce normal and rolling force demands but also maintain lower force indices under varying operational conditions. Conversely, flat tips impose higher mechanical loads, leading to accelerated wear and shorter service life.
+
+Furthermore, the penetration-to-force ratios observed in this study align with findings from previous research. Gertsch et al. [58], for instance, highlight the strong correlation between penetration indices and cutter lifespan, noting that higher NFI and RFI values correlate with increased wear rates. This study confirms that by employing more curved or tapered cutter tips—such as bullet or rounded designs—cutting efficiency can be improved while reducing the frequency of cutterhead interventions.
+
+These findings are consistent with those reported by Farrokh [58] and Gertsch et al. [58], who identified penetration indices as one of the most influential parameters governing disc cutter durability. According to their research, higher NFI and RFI values are directly associated with increased wear and corresponding reduction in cutter lifespan. This study confirms that by employing more curved or tapered cutter tips—such as bullet or rounded designs—cutting efficiency can be improved while reducing the frequency of cutterhead interventions.
+
+### 4.4 Damage Zone Characteristics and the Effect of Cutter Tip Shape
+
+The distribution of effective plastic strain reveals that cutter tip geometry plays a critical role in determining the intensity and extent of damaged zones in rock. Among all tested configurations, the flat-tip cutter generates the widest and most intense damage zones. At higher penetration depths and narrower spacings, we clearly observe overlapping plastic zones between adjacent cutters. These conditions correspond to the highest measured normal force (up to 396 kN), rolling force (56.8 kN), and cutting coefficient (14.3%), indicating severe rock crushing and inefficient energy utilization.
+
+In contrast, the bullet-shaped cutter results in the most localized and least extensive damage zones. For instance, at a spacing of 76 mm and penetration depth of 1.9 mm, the induced cracks fail to reach adjacent cutting paths, suggesting incomplete fragmentation and lower cutting efficiency. In such cases, damage is confined, with an NFI of approximately 53 and a cutting coefficient remaining below 5%.
+
+The rounded-tip cutter demonstrates intermediate behavior. Its damage zone is more expansive than the bullet-shaped tip due to broader stress distribution and surface crack propagation, especially at greater penetration depths. Meanwhile, the wedge-shaped tip focuses stress at the tip edges, producing both deep vertical cracks and lateral fractures, thereby expanding the damaged region considerably.
+
+Increasing cutter spacing or reducing penetration depth leads to diminished crack overlap, particularly for focused-tip geometries like the bullet-shaped cutter. In some cases, this results in incomplete breakage between cutters, reducing cutting effectiveness. These findings highlight that optimal selection of cutter tip geometry, spacing, and penetration depth is essential for maximizing fragmentation efficiency while minimizing tool wear and energy consumption.
+
+## 5. Conclusion
+
+This study systematically investigated how disc cutter tip geometry influences rock cutting performance through comprehensive numerical simulations. We evaluated four commonly used cutter shapes—flat, wedge, rounded, and bullet—in terms of normal and rolling forces, cutter coefficient (CC), penetration force indices (NFI and RFI), and damage zone characteristics under varying penetration depths and cutter spacings.
+
+We developed our simulation framework based on experimental studies conducted by Gertsch et al., whose tests utilized a 17-inch Robbins disc cutter on Colorado Red Granite. To validate our numerical model's accuracy before applying it to the four cutter geometries—where no experimental data were available—we simulated uniaxial and Brazilian tests on Colorado Red Granite. The errors between numerical and experimental results were less than 2.8% and 13%, respectively. Furthermore, when simulating the standard disc cutter test conditions by Gertsch et al., our model yielded errors below 10% in normal force and 13% in rolling force, confirming its reliability for comparative cutter geometry analysis.
+
+Our results indicate that cutter tip shape is a critical determinant of cutting performance. The flat-tip cutter, characterized by a broad and blunt contact surface, consistently produced the highest normal and rolling forces, widest damaged zones, and greatest CC, NFI, and RFI values, reflecting elevated mechanical demands and accelerated cutter wear. Conversely, the bullet-shaped cutter exhibited the lowest force demands and most confined damage, indicating enhanced efficiency and extended service life.
+
+Rounded and wedge cutters demonstrated intermediate behavior. The wedge tip facilitated deeper penetration through stress concentration but also induced wider lateral damage, while the rounded tip provided balanced performance with moderate forces and damage levels.
+
+Analysis of penetration indices and CC confirmed that flatter tip geometries are associated with greater energy consumption and torque demand. The bullet-shaped cutter, with its smaller contact area, not only minimized mechanical loads but also maintained lower force indices across all conditions, aligning with efficiency and durability goals in mechanized tunneling.
+
+Finally, damage zone visualizations emphasized that tip geometry significantly affects rock fragmentation behavior, with optimal performance achieved by combining proper geometry, penetration depth, and spacing. These findings support the use of curved or tapered cutter designs, such as bullet or rounded shapes, to improve cutting efficiency, reduce energy consumption, and minimize maintenance frequency in full-face tunnel boring operations.
